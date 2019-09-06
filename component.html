@@ -15,8 +15,9 @@
     var data = { status: "Critical" };
     //render component dengan nama my-cmp
     //setiap commponent vue adlh objek sendiri tetapi jika berbagi sumber data yg sama
+    //penamaanfungsi dg es v-6
     Vue.component("my-cmp", {
-      data: function() {
+      data: () => {
         return {
           //data
           status: "Critical"
@@ -27,7 +28,7 @@
         '<p>Server Status: {{ status }} (<button @click="changeStatus">Change</button>)</p>',
       //methode
       methods: {
-        changeStatus: function() {
+        changeStatus: () => {
           this.status = "Normal";
         }
       }
