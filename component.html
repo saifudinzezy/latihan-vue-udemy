@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  </head>
+  <body>
+      <div id="app">
+        <my-cmp></my-cmp>
+        <hr>
+        <my-cmp></my-cmp>
+      </div>
+  </body>
+  <script>
+    //render component dengan nama my-cmp
+      Vue.component('my-cmp', {
+        data: function () {
+            return{
+                //data
+                status: 'Critical'
+            }
+        },
+        //template / tampilan
+        template: '<p>Server Status: {{ status }}</p>'
+      });
+
+      new Vue({
+        el: '#app'
+      });
+  </script>
+</html>

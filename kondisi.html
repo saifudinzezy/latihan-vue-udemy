@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <!-- if else -->
+      <!-- https://vuejs.org/v2/guide/conditional.html#v-else-if -->
+      <p v-if="show">Show me! {{ show }}</p>
+      <p v-else>No show me! {{ show }}</p>
+      <template v-if="show">
+          <h1>heading</h1>
+          <p>inside template</p>
+      </template>
+      <p v-show="show">Yuuuhu!</p>
+      <button @click="show = !show">Switch</button>
+    </div>
+
+    <script>
+      new Vue({
+        el: "#app",
+        data: {
+          show: true
+        }
+      });
+    </script>
+  </body>
+</html>

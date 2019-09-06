@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <!-- jika ada argumen makan di masukan di parameter -->
+      <button v-on:click="increment(2, $event)">Clickme</button>
+      <button v-on:click="counter++">Clickme</button>
+      <p>{{ counter  * 2 > 10 ? "Great!" : "Smaller!"}}</p>
+      <!-- fungsi v-on isinya sama dengan DOM -->
+      <p v-on:mousemove="update">
+        Coordinate: {{ x }} / {{ y }} -
+        <span v-on:mousemove.stop="">DEAD SHOT</span> -
+      </p>
+      <!-- enter, esc, space -->
+      <input type="text" name="" id="" v-on:keyup.enter="alertMe">
+    </div>
+
+    <script>
+      new Vue({
+        el: "#app",
+        data: {
+          counter: 0,
+          x: 0,
+          y: 0
+        },
+        methods: {
+          increment: function(step, event) {
+            this.counter += step;
+          },
+          update: function(params) {
+            this.x = params.clientX;
+            this.y = params.clientY;
+          },
+          dummy: function (event) {
+            event.stopPropagation();            
+          },
+          alertMe: function () {
+            alert('Alert');
+          }
+        }
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <button @click="counter++">Increment</button>
+      <button v-on:click="counter--">Decrement</button>
+      <button v-on:click="second++">Second</button>
+      <a :href="link">Google</a>
+      <p>Counter: {{ counter }} | {{ second }}</p>
+      <p>Result: {{ result() }} | {{ output }}</p>
+    </div>
+
+    <script>
+      new Vue({
+        el: "#app",
+        data: {
+          // this variabel
+          counter: 0,
+          second: 0,
+          link: 'http://google.com'
+        },
+        computed: {
+            output: function () {
+                console.log('Computed')
+            return this.counter > 5 ? "Great 5" : "Smaller then 5";
+            }
+        },
+        watch: {
+            //asyncronous taks
+            //var counter include function
+            counter: function (value) {
+                var vm = this;
+                setTimeout(function () {
+                    vm.counter = 0;
+                }, 2000);
+            }
+        },
+        methods: {
+        // this function result for p
+          result() {
+            return this.counter > 5 ? "Great 5" : "Smaller then 5";
+          }
+        }
+      });
+    </script>
+  </body>
+</html>

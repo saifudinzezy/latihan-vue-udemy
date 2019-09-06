@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <ul>
+        <li v-for="value in ingredients">{{ value }}</li>
+        <hr />
+        <li v-for="(value, i) in ingredients" :key="value">{{ value }} ({{ i }})</li>
+      </ul>
+      <button @click="ingredients.push('spices')">Add new</button>
+      <hr />
+      <template v-for="(value, index) in ingredients">
+        <h1>{{ value }}</h1>
+        <p>{{ index }}</p>
+      </template>
+      <hr />
+      <!-- looping array dan object -->
+      <ul>
+        <!-- looping array key -> value -->
+        <li v-for="person in persons">
+          <!-- looping person -->
+          <!-- key -> value -->
+          <div v-for="(value, key, index) in person">
+            {{ key }}: {{ value }} ({{ index }})
+          </div>
+        </li>
+      </ul>
+      <span v-for="n in 10">{{ n }}</span>
+    </div>
+
+    <script>
+      new Vue({
+        el: "#app",
+        data: {
+          // this variabel
+          //array
+          ingredients: ["meat", "fruit", "cookies"],
+          //array and object
+          persons: [
+            { name: "Max", age: 27, color: "red" },
+            { name: "Anna", age: "unknow", color: "blue" }
+          ]
+        }
+      });
+    </script>
+  </body>
+</html>
