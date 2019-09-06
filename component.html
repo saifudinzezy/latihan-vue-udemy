@@ -4,27 +4,37 @@
     <script src="https://unpkg.com/vue/dist/vue.js"></script>
   </head>
   <body>
-      <div id="app">
-        <my-cmp></my-cmp>
-        <hr>
-        <my-cmp></my-cmp>
-      </div>
+    <div id="app">
+      <!-- ini commponent dari vue.js -->
+      <my-cmp></my-cmp>
+      <hr />
+      <my-cmp></my-cmp>
+    </div>
   </body>
   <script>
+    var data = { status: "Critical" };
     //render component dengan nama my-cmp
-      Vue.component('my-cmp', {
-        data: function () {
-            return{
-                //data
-                status: 'Critical'
-            }
-        },
-        //template / tampilan
-        template: '<p>Server Status: {{ status }}</p>'
-      });
+    //setiap commponent vue adlh objek sendiri tetapi jika berbagi sumber data yg sama
+    Vue.component("my-cmp", {
+      data: function() {
+        return {
+          //data
+          status: "Critical"
+        };
+      },
+      //template / tampilan
+      template:
+        '<p>Server Status: {{ status }} (<button @click="changeStatus">Change</button>)</p>',
+      //methode
+      methods: {
+        changeStatus: function() {
+          this.status = "Normal";
+        }
+      }
+    });
 
-      new Vue({
-        el: '#app'
-      });
+    new Vue({
+      el: "#app"
+    });
   </script>
 </html>
